@@ -7,7 +7,7 @@
                 if(isDatabaseThere) {
                     resolve(true);
                 } else {
-                    reject('Error fetching the database!');
+                    resolve(false);
                 }
             }, 5000)
         })
@@ -17,25 +17,28 @@
         if(resolve === true) {
             alert('Success! You can now use the app.');
             console.log('Success! You can now use the app.');
-
-            document.querySelector('#spinner').style.display = 'none';
-            let myLabel = document.querySelector('.myLabel');
-            let myInput = document.querySelector('#task-message');
-            let myBtn = document.querySelector('#submit-btn');
-
-            const elementsToHide = [myLabel, myInput, myBtn];
-
-            const hiddenStyle = { display: 'none' };
-            const visibleStyle = { display: 'block' };
-            
-            elementsToHide.forEach(element => {
-                if (element) {
-                    Object.assign(element.style, visibleStyle);
-                }
-            });
-
-            initializeApp();
+        } else if (resolve === false) {
+            alert('No existing database found. Starting a new session.');
+            console.log('No existing database found. Starting a new session.');
         }
+
+        document.querySelector('#spinner').style.display = 'none';
+        let myLabel = document.querySelector('.myLabel');
+        let myInput = document.querySelector('#task-message');
+        let myBtn = document.querySelector('#submit-btn');
+
+        const elementsToHide = [myLabel, myInput, myBtn];
+
+        const hiddenStyle = { display: 'none' };
+        const visibleStyle = { display: 'block' };
+        
+        elementsToHide.forEach(element => {
+            if (element) {
+                Object.assign(element.style, visibleStyle);
+            }
+        });
+
+        initializeApp();
     }).catch((reject) => {
         alert(reject);
     })

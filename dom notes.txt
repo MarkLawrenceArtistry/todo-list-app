@@ -1,0 +1,123 @@
+// document.addEventListener('click', function () {
+//    console.log('The document was clicked');
+// });
+
+// document.body.addEventListener('click', function () {
+//     console.log('The body element was clicked');
+// });
+
+
+
+
+
+// event.target - gives us direct access to the paragraph element that was clicked. 
+// Because we have access to the element directly, we can access its .textContent, modify its styles, 
+// update the classes it has - we can do anything we want to it!
+
+
+// const myCustomDiv = document.createElement('div');
+
+// function respondToTheClick(evt) {
+//     console.log('A paragraph was clicked: ' + evt.target.textContent);
+// }
+
+// for (let i = 1; i <= 200; i++) {
+//     const newElement = document.createElement('p');
+//     newElement.textContent = 'This is paragraph number ' + i;
+
+//     myCustomDiv.appendChild(newElement);
+// }
+
+// document.body.appendChild(myCustomDiv);
+
+// myCustomDiv.addEventListener('click', respondToTheClick);
+
+
+
+
+
+
+// One of the properties of the Node Interface that is inherited is .nodeName. 
+// We can use this property to verify that the target element is actually the element we're looking for. 
+
+// document.querySelector('#content').addEventListener('click', function (evt) {
+//     if (evt.target.nodeName === 'SPAN') {  // ← verifies target is desired element
+//         console.log('A span was clicked with text ' + evt.target.textContent);
+//     }
+// });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('the DOM is ready to be interacted with!');
+});
+
+
+
+// Ang standard sa paggawa ng element via looping is gagawa ka muna ng PARENT div
+// Then create element inside the loop
+// After that append that element in the PARENT div
+// Append that div to the BODY document.body
+
+// Always check the performance of your code via performance.now() on the console
+
+//  The browser is constantly working to make the screen match the DOM.
+// When we add a new element, the browser has to run through a reflow calculation
+// (to determine the new screen layout) and then repaint the screen. 
+
+// Reflow is the process of the browser laying out the page. 
+// It happens when you first display the DOM (generally after the DOM and CSS have been loaded), 
+// and happens again every time something could change the layout. This is a fairly expensive (slow) process.
+
+// Repaint happens after reflow as the browser draws the new layout to the screen. 
+// This is fairly quick, but you still want to limit how often it happens.
+
+
+// Ang standard sa pagbabago ng style ng element for example removing comments:
+// Iha-hide mo muna via element.style.display = "none"
+// Then ide-delete mo na siya sa logic mo
+// Then saka mo ulit element.style.display = "block"
+// Because of Reflow and Repaint
+
+
+// Call Stack
+
+// When a function is invoked, it is added to the list.
+// When all of the code inside a function has been run, then the function is removed from the call stack.
+
+
+// Event Loop, .addEventListener() <- asynchronous code
+console.log('Hello')
+document.addEventListener('click', function numbers() {
+    console.log('123')
+})
+console.log('World')
+
+// call stack: console.log('Hello')
+// call stack: document saves the event listener to the (browser)
+// call stack: console.log('World')
+
+// When the document is clicked, the listener will go to the (queue), THEN
+// IF the call stack is empty it will call the function numbers() then the function body console.log('123')
+
+
+// .setTimeout() <- asynchronous code
+
+
+
+
+// While JavaScript is running, the page is "busy" and the user 
+// won't be able to interact with the page (e.g. clicking a button, filling out a form).
+
+
+
+
+
+
+For dynamic divs
+// 1. target the button by its parent div (taskDiv)
+// 2. add an event listener to it
+// 3. inside you can pass in the current element object (task)
+// 3.5. the current element object in tasks array(inside this forEach) in which we display in the document
+// 4. add a function that accepts the element as argument to modify that certain element object

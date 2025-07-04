@@ -1,0 +1,33 @@
+
+
+#task-form {
+    margin: 5px;
+}
+
+#tasks-div {
+    overflow: auto;
+    max-height: 100vh;
+}
+
+.task-instance {
+    background-color: #f3f3f3;
+    padding: 5px 15px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.task-instance p {
+    display: inline-block;
+}
+
+.task-instance-message {
+    flex: 1;
+}
+
+.task-status {
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    margin: 0;
+}
